@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCP Server</title>
+    <title>Agentic Architecture - The Reference Architecture for AI Agents</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6C3CE9;
-            --primary-dark: #4B1FBF;
-            --secondary: #FF3366;
-            --accent: #00D4AA;
-            --dark: #0D0D1A;
-            --darker: #07070D;
-            --light: #F8F9FF;
-            --gray: #8A8AA3;
+            --bg-dark: #0a0a0f;
+            --bg-section: #12121a;
+            --bg-card: #1a1a25;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #6b6b7a;
+            --accent-orange: #ff6b35;
+            --accent-orange-dark: #e55a2b;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --gradient-hero: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff6b35 100%);
         }
 
         * {
@@ -23,278 +30,629 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: var(--darker);
-            color: var(--light);
-            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
 
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             padding: 20px 0;
-            border-bottom: 1px solid rgba(108, 60, 233, 0.3);
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .logo span {
+            color: var(--accent-orange);
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 50%, var(--dark) 100%);
-            padding: 120px 0;
-            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             position: relative;
+            padding-top: 80px;
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(108, 60, 233, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(255, 51, 102, 0.2) 0%, transparent 50%);
+            background:
+                radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 107, 53, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 30% at 20% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
             pointer-events: none;
         }
 
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
         .hero h1 {
-            font-size: 4rem;
+            font-size: clamp(3rem, 8vw, 5.5rem);
             font-weight: 900;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--light) 0%, var(--accent) 100%);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 .gradient {
+            background: var(--gradient-hero);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            position: relative;
-            z-index: 1;
         }
 
-        .hero p {
-            font-size: 1.4rem;
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Sections */
-        section {
-            padding: 100px 0;
-        }
-
-        section:nth-child(even) {
-            background: var(--dark);
-        }
-
-        section:nth-child(odd) {
-            background: var(--darker);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            color: var(--light);
-        }
-
-        .section-header .accent {
-            color: var(--primary);
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .content-card {
-            background: linear-gradient(135deg, rgba(108, 60, 233, 0.1) 0%, rgba(255, 51, 102, 0.05) 100%);
-            border: 1px solid rgba(108, 60, 233, 0.3);
-            border-radius: 20px;
-            padding: 48px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .content-card h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .content-card p {
-            font-size: 1.1rem;
-            color: var(--gray);
-            margin-bottom: 24px;
+        .hero-description {
+            font-size: 1.35rem;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin-bottom: 48px;
             line-height: 1.8;
         }
 
-        .content-card ul {
-            list-style: none;
-            margin-bottom: 24px;
-        }
-
-        .content-card ul li {
-            padding: 12px 0;
-            padding-left: 32px;
-            position: relative;
-            color: var(--gray);
-        }
-
-        .content-card ul li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--secondary);
-            font-weight: bold;
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
         }
 
         .btn {
-            display: inline-block;
-            padding: 14px 32px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
             font-size: 1rem;
-            font-weight: 700;
+            font-weight: 600;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 12px;
             transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--light);
+            background: var(--accent-orange);
+            color: white;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(108, 60, 233, 0.4);
+            background: var(--accent-orange-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
         }
 
         .btn-secondary {
             background: transparent;
-            color: var(--accent);
-            border: 2px solid var(--accent);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
         }
 
         .btn-secondary:hover {
-            background: var(--accent);
-            color: var(--darker);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* Feature Grid */
-        .feature-grid {
+        /* Components Overview Section */
+        .components-section {
+            padding: 140px 0;
+            background: var(--bg-section);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Two Column Component Grid */
+        .components-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            margin-top: 48px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .feature-item {
-            background: rgba(108, 60, 233, 0.1);
-            border: 1px solid rgba(108, 60, 233, 0.2);
+        @media (max-width: 768px) {
+            .components-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .component-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 32px;
-            text-align: center;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .component-card:hover {
+            border-color: rgba(255, 107, 53, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .component-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .component-icon.orange { background: rgba(255, 107, 53, 0.15); }
+        .component-icon.blue { background: rgba(59, 130, 246, 0.15); }
+        .component-icon.purple { background: rgba(139, 92, 246, 0.15); }
+        .component-icon.cyan { background: rgba(6, 182, 212, 0.15); }
+        .component-icon.green { background: rgba(16, 185, 129, 0.15); }
+
+        .component-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .component-content p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Detail Sections */
+        .detail-section {
+            padding: 140px 0;
+            position: relative;
+        }
+
+        .detail-section:nth-child(odd) {
+            background: var(--bg-dark);
+        }
+
+        .detail-section:nth-child(even) {
+            background: var(--bg-section);
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        @media (max-width: 968px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+
+        .detail-content .section-label {
+            text-align: left;
+        }
+
+        .detail-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .detail-content > p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
         }
 
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 16px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: rgba(255, 107, 53, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
 
-        .feature-item h4 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--light);
+        .feature-icon svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--accent-orange);
         }
 
-        .feature-item p {
-            color: var(--gray);
+        .feature-text strong {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .feature-text span {
+            color: var(--text-secondary);
             font-size: 0.95rem;
         }
 
-        /* Summary Section */
-        .summary {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--dark) 100%);
-            text-align: center;
+        .detail-visual {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .summary .content-card {
-            background: rgba(0, 0, 0, 0.3);
-            border-color: rgba(0, 212, 170, 0.3);
+        .detail-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
         }
 
-        .summary h2 {
-            color: var(--accent);
+        .detail-visual.orange::before { background: var(--accent-orange); }
+        .detail-visual.blue::before { background: var(--accent-blue); }
+        .detail-visual.purple::before { background: var(--accent-purple); }
+        .detail-visual.cyan::before { background: var(--accent-cyan); }
+        .detail-visual.green::before { background: var(--accent-green); }
+
+        .visual-icon {
+            font-size: 4rem;
+            margin-bottom: 24px;
+        }
+
+        .visual-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .visual-description {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Agent Mesh Special Section */
+        .mesh-section {
+            padding: 160px 0;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #0f0f18 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mesh-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse 100% 60% at 50% 100%, rgba(139, 92, 246, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .mesh-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .mesh-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-purple);
+            margin-bottom: 32px;
+        }
+
+        .mesh-content h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .mesh-content h2 span {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mesh-content > p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .mesh-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 600px) {
+            .mesh-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mesh-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px;
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 12px;
+        }
+
+        .mesh-feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(139, 92, 246, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .mesh-feature span {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .btn-mesh {
+            background: var(--accent-purple);
+            color: white;
+        }
+
+        .btn-mesh:hover {
+            background: #7c3aed;
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
         }
 
         /* Footer */
         footer {
-            background: var(--darker);
-            padding: 48px 0;
-            border-top: 1px solid rgba(108, 60, 233, 0.3);
-            text-align: center;
+            background: var(--bg-section);
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .footer-logo span {
+            color: var(--accent-orange);
         }
 
         footer p {
-            color: var(--gray);
-            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
         footer a {
-            color: var(--primary);
+            color: var(--accent-orange);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         footer a:hover {
-            color: var(--secondary);
+            text-decoration: underline;
         }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content > * {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .hero-label { animation-delay: 0.1s; }
+        .hero h1 { animation-delay: 0.2s; }
+        .hero-description { animation-delay: 0.3s; }
+        .hero-cta { animation-delay: 0.4s; }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .container {
+                padding: 0 20px;
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            nav {
+                display: none;
             }
 
-            .section-header h2 {
-                font-size: 2rem;
+            .hero {
+                min-height: auto;
+                padding: 140px 0 100px;
             }
 
-            .content-card {
-                padding: 32px 24px;
+            .components-section,
+            .detail-section {
+                padding: 80px 0;
             }
 
-            section {
-                padding: 60px 0;
+            .detail-grid {
+                gap: 40px;
+            }
+
+            .detail-grid.reverse {
+                direction: ltr;
+            }
+
+            .mesh-section {
+                padding: 100px 0;
             }
         }
     </style>
@@ -302,161 +660,345 @@
 <body>
     <header>
         <div class="container">
-            <div class="logo">MCP Server</div>
+            <div class="header-inner">
+                <div class="logo">Agentic<span>Architecture</span></div>
+                <nav>
+                    <a href="#components">Components</a>
+                    <a href="#platform">Platform</a>
+                    <a href="#mcp">MCP</a>
+                    <a href="#catalog">Catalog</a>
+                    <a href="#gateway">Gateway</a>
+                    <a href="#mesh">Agent Mesh</a>
+                </nav>
+            </div>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
         <div class="container">
-            <h1>Agentic Architecture</h1>
-            <p>To Do </p>
+            <div class="hero-content">
+                <div class="hero-label">Enterprise AI Infrastructure</div>
+                <h1>The Agentic<br><span class="gradient">Reference Architecture</span></h1>
+                <p class="hero-description">A comprehensive framework for building, deploying, and orchestrating AI agents at enterprise scale. Define the infrastructure layer that powers the next generation of intelligent systems.</p>
+                <div class="hero-cta">
+                    <a href="#components" class="btn btn-primary">
+                        Explore Components
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#mesh" class="btn btn-secondary">Learn About Agent Mesh</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Components Overview -->
+    <section class="components-section" id="components">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Architecture Components</div>
+                <h2>Building Blocks of Agentic Systems</h2>
+                <p>Five core components form the foundation of enterprise-grade AI agent infrastructure</p>
+            </div>
+            <div class="components-grid">
+                <a href="#platform" class="component-card">
+                    <div class="component-icon orange">
+                        <svg width="24" height="24" fill="none" stroke="#ff6b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18"/></svg>
+                    </div>
+                    <div class="component-content">
+                        <h3>Platform Engineering</h3>
+                        <p>The foundational discipline for designing scalable, secure agent infrastructure and toolchains.</p>
+                    </div>
+                </a>
+                <a href="#mcp" class="component-card">
+                    <div class="component-icon blue">
+                        <svg width="24" height="24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <div class="component-content">
+                        <h3>Model Context Protocol</h3>
+                        <p>The open standard defining how AI agents communicate with tools, data, and services.</p>
+                    </div>
+                </a>
+                <a href="#catalog" class="component-card">
+                    <div class="component-icon purple">
+                        <svg width="24" height="24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    </div>
+                    <div class="component-content">
+                        <h3>Agent Catalog</h3>
+                        <p>Centralized registry for discovering, deploying, and managing AI agents across the organization.</p>
+                    </div>
+                </a>
+                <a href="#gateway" class="component-card">
+                    <div class="component-icon cyan">
+                        <svg width="24" height="24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    </div>
+                    <div class="component-content">
+                        <h3>LLM Gateway</h3>
+                        <p>Unified interface for accessing multiple AI models with enterprise-grade controls.</p>
+                    </div>
+                </a>
+                <a href="#mesh" class="component-card" style="grid-column: span 2;">
+                    <div class="component-icon green">
+                        <svg width="24" height="24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                    </div>
+                    <div class="component-content">
+                        <h3>Agent Mesh</h3>
+                        <p>Distributed networking layer enabling seamless communication, coordination, and collaboration between AI agents across organizational boundaries.</p>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Platform Engineering Section -->
-    <section id="platform-engineering">
+    <section class="detail-section" id="platform">
         <div class="container">
-            <div class="section-header">
-                <h2>Platform <span class="accent">Engineering</span></h2>
-                <p>Building the foundation for agentic infrastructure at scale</p>
-            </div>
-            <div class="content-card">
-                <h3>The Role of Platform Engineering</h3>
-                <p>Platform Engineering is the discipline of designing and building toolchains and workflows that enable self-service capabilities for software engineering organizations. In the context of agentic AI, Platform Engineering takes on a critical role in establishing the infrastructure that allows AI agents to operate reliably, securely, and at scale.</p>
-                <p>Key responsibilities of Platform Engineering in building agentic infrastructure include:</p>
-                <ul>
-                    <li><strong>Infrastructure Orchestration:</strong> Managing the deployment, scaling, and lifecycle of AI agents across distributed environments</li>
-                    <li><strong>Security & Governance:</strong> Implementing authentication, authorization, and audit trails for agent interactions</li>
-                    <li><strong>Observability:</strong> Providing comprehensive monitoring, logging, and tracing capabilities for agent operations</li>
-                    <li><strong>Developer Experience:</strong> Creating intuitive interfaces and APIs that enable teams to build, deploy, and manage agents efficiently</li>
-                    <li><strong>Standardization:</strong> Establishing protocols and patterns that ensure interoperability between diverse agent systems</li>
-                </ul>
-                <p>As organizations scale their AI agent deployments, Platform Engineering becomes the backbone that ensures reliability, maintainability, and continuous innovation in the agentic ecosystem.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Agent Mesh Section -->
-    <section id="agent-mesh">
-        <div class="container">
-            <div class="section-header">
-                <h2>Agent <span class="accent">Mesh</span></h2>
-                <p>A critical component of modern agentic architecture</p>
-            </div>
-            <div class="content-card">
-                <h3>The Agent Mesh Architecture</h3>
-                <p>A significant piece of the agentic architecture is the <strong>Agent Mesh</strong> — a distributed networking layer that enables seamless communication, coordination, and collaboration between AI agents across organizational boundaries.</p>
-                <p>The Agent Mesh provides:</p>
-                <ul>
-                    <li><strong>Service Discovery:</strong> Automatic discovery and registration of agents within the mesh</li>
-                    <li><strong>Intelligent Routing:</strong> Dynamic routing of requests to the most appropriate agent based on capabilities and availability</li>
-                    <li><strong>Load Balancing:</strong> Distribution of workloads across multiple agent instances</li>
-                    <li><strong>Fault Tolerance:</strong> Automatic failover and recovery mechanisms for resilient agent operations</li>
-                    <li><strong>Cross-Domain Communication:</strong> Secure communication protocols for agents operating across different domains and organizations</li>
-                </ul>
-                <p>The Agent Mesh is fundamental to achieving true multi-agent collaboration at enterprise scale.</p>
-                <a href="https://AgentMesh.AI" class="btn btn-primary">Learn More</a>
+            <div class="detail-grid">
+                <div class="detail-content">
+                    <div class="section-label">Foundation Layer</div>
+                    <h2>Platform Engineering</h2>
+                    <p>Platform Engineering is the discipline of designing and building toolchains and workflows that enable self-service capabilities for software engineering organizations. In agentic AI, it establishes the infrastructure for reliable, secure, and scalable agent operations.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Infrastructure Orchestration</strong>
+                                <span>Managing deployment, scaling, and lifecycle of AI agents across distributed environments</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Security & Governance</strong>
+                                <span>Implementing authentication, authorization, and audit trails for agent interactions</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Observability</strong>
+                                <span>Comprehensive monitoring, logging, and tracing for agent operations</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Developer Experience</strong>
+                                <span>Intuitive interfaces and APIs for building, deploying, and managing agents</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="detail-visual orange">
+                    <div class="visual-icon">&#9881;</div>
+                    <div class="visual-title">The Infrastructure Backbone</div>
+                    <p class="visual-description">As organizations scale their AI agent deployments, Platform Engineering becomes the backbone ensuring reliability, maintainability, and continuous innovation in the agentic ecosystem. It's the foundation everything else builds upon.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- MCP Section -->
-    <section id="mcp">
+    <section class="detail-section" id="mcp">
         <div class="container">
-            <div class="section-header">
-                <h2>Model Context <span class="accent">Protocol</span></h2>
-                <p>The standard for AI agent communication</p>
-            </div>
-            <div class="content-card">
-                <h3>Understanding MCP</h3>
-                <p>The <strong>Model Context Protocol (MCP)</strong> is an open standard that defines how AI agents communicate with external tools, data sources, and services. MCP Servers act as the bridge between AI models and the broader ecosystem of enterprise systems and APIs.</p>
-                <p>MCP enables:</p>
-                <ul>
-                    <li><strong>Standardized Tool Integration:</strong> A universal protocol for connecting AI agents to any tool or service</li>
-                    <li><strong>Context Management:</strong> Efficient handling of context windows and memory across agent interactions</li>
-                    <li><strong>Resource Access:</strong> Secure and controlled access to files, databases, and external APIs</li>
-                    <li><strong>Prompt Templates:</strong> Reusable templates for common agent operations and workflows</li>
-                    <li><strong>Capability Declaration:</strong> Clear specification of what each MCP server can do</li>
-                </ul>
-                <p>MCP Servers are the workhorses of agentic systems, providing the connectivity layer that transforms AI models into capable, action-oriented agents.</p>
-                <a href="https://mcpserver.ai" class="btn btn-primary">Learn More</a>
+            <div class="detail-grid reverse" style="direction: rtl;">
+                <div class="detail-content" style="direction: ltr;">
+                    <div class="section-label">Communication Standard</div>
+                    <h2>Model Context Protocol</h2>
+                    <p>MCP is an open standard that defines how AI agents communicate with external tools, data sources, and services. MCP Servers act as the bridge between AI models and the broader ecosystem of enterprise systems and APIs.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Standardized Tool Integration</strong>
+                                <span>Universal protocol for connecting AI agents to any tool or service</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Context Management</strong>
+                                <span>Efficient handling of context windows and memory across interactions</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Secure Resource Access</strong>
+                                <span>Controlled access to files, databases, and external APIs</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Capability Declaration</strong>
+                                <span>Clear specification of what each MCP server can do</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="https://mcpserver.ai" class="btn btn-primary">Learn More</a>
+                </div>
+                <div class="detail-visual blue" style="direction: ltr;">
+                    <div class="visual-icon">&#128279;</div>
+                    <div class="visual-title">The Connectivity Layer</div>
+                    <p class="visual-description">MCP Servers are the workhorses of agentic systems, providing the connectivity layer that transforms AI models into capable, action-oriented agents that can interact with the real world.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Agent Catalog Section -->
-    <section id="agent-catalog">
+    <section class="detail-section" id="catalog">
         <div class="container">
-            <div class="section-header">
-                <h2>Agent <span class="accent">Catalog</span></h2>
-                <p>Discover, deploy, and manage AI agents</p>
-            </div>
-            <div class="content-card">
-                <h3>The Agent Catalog</h3>
-                <p>The <strong>Agent Catalog</strong> serves as a centralized registry for discovering, deploying, and managing AI agents within an organization. It provides a curated marketplace of pre-built agents alongside custom agent definitions.</p>
-                <p>Key features of the Agent Catalog include:</p>
-                <ul>
-                    <li><strong>Agent Discovery:</strong> Search and browse available agents by capability, domain, or use case</li>
-                    <li><strong>Version Management:</strong> Track agent versions and manage updates across deployments</li>
-                    <li><strong>Configuration Management:</strong> Centralized configuration and parameter management for agents</li>
-                    <li><strong>Access Control:</strong> Role-based access control for agent deployment and usage</li>
-                    <li><strong>Analytics & Insights:</strong> Usage metrics and performance analytics for deployed agents</li>
-                </ul>
-                <p>The Agent Catalog is essential for organizations looking to scale their agent deployments while maintaining governance and control.</p>
-                <a href="https://AgentCatalog.com" class="btn btn-primary">Learn More</a>
+            <div class="detail-grid">
+                <div class="detail-content">
+                    <div class="section-label">Discovery & Management</div>
+                    <h2>Agent Catalog</h2>
+                    <p>The Agent Catalog serves as a centralized registry for discovering, deploying, and managing AI agents within an organization. It provides a curated marketplace of pre-built agents alongside custom agent definitions.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Agent Discovery</strong>
+                                <span>Search and browse agents by capability, domain, or use case</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Version Management</strong>
+                                <span>Track versions and manage updates across deployments</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Access Control</strong>
+                                <span>Role-based access control for agent deployment and usage</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Analytics & Insights</strong>
+                                <span>Usage metrics and performance analytics for deployed agents</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="https://AgentCatalog.com" class="btn btn-primary">Learn More</a>
+                </div>
+                <div class="detail-visual purple">
+                    <div class="visual-icon">&#128218;</div>
+                    <div class="visual-title">Central Agent Registry</div>
+                    <p class="visual-description">The Agent Catalog is essential for organizations looking to scale their agent deployments while maintaining governance and control. It's your single source of truth for all agents.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- LLM Gateway Section -->
-    <section id="llm-gateway">
+    <section class="detail-section" id="gateway">
         <div class="container">
-            <div class="section-header">
-                <h2>LLM/Model <span class="accent">Gateways</span></h2>
-                <p>Unified access to AI models at enterprise scale</p>
-            </div>
-            <div class="content-card">
-                <h3>LLM Gateway Architecture</h3>
-                <p><strong>LLM/Model Gateways</strong> provide a unified interface for accessing multiple AI models from various providers. They act as a critical abstraction layer that enables organizations to leverage the best models for each use case while maintaining consistency and control.</p>
-                <p>Gateway capabilities include:</p>
-                <ul>
-                    <li><strong>Model Abstraction:</strong> Unified API across multiple LLM providers (OpenAI, Anthropic, Google, etc.)</li>
-                    <li><strong>Intelligent Routing:</strong> Automatic model selection based on task requirements, cost, or latency</li>
-                    <li><strong>Rate Limiting & Quotas:</strong> Enterprise-grade traffic management and cost control</li>
-                    <li><strong>Caching & Optimization:</strong> Response caching and prompt optimization for efficiency</li>
-                    <li><strong>Fallback & Redundancy:</strong> Automatic failover between providers for high availability</li>
-                    <li><strong>Audit & Compliance:</strong> Complete logging of all model interactions for compliance requirements</li>
-                </ul>
-                <p>LLM Gateways are essential for production AI deployments, providing the reliability, security, and observability required by enterprise applications.</p>
-                <a href="https://LLM-Gateway.com" class="btn btn-primary">Learn More</a>
+            <div class="detail-grid reverse" style="direction: rtl;">
+                <div class="detail-content" style="direction: ltr;">
+                    <div class="section-label">Model Access Layer</div>
+                    <h2>LLM / Model Gateway</h2>
+                    <p>LLM Gateways provide a unified interface for accessing multiple AI models from various providers. They act as a critical abstraction layer enabling organizations to leverage the best models while maintaining consistency and control.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Model Abstraction</strong>
+                                <span>Unified API across OpenAI, Anthropic, Google, and more</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Intelligent Routing</strong>
+                                <span>Automatic model selection based on task, cost, or latency</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Rate Limiting & Quotas</strong>
+                                <span>Enterprise-grade traffic management and cost control</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Audit & Compliance</strong>
+                                <span>Complete logging of all model interactions for compliance</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="https://LLM-Gateway.com" class="btn btn-primary">Learn More</a>
+                </div>
+                <div class="detail-visual cyan" style="direction: ltr;">
+                    <div class="visual-icon">&#9889;</div>
+                    <div class="visual-title">Production-Ready AI</div>
+                    <p class="visual-description">LLM Gateways are essential for production AI deployments, providing the reliability, security, and observability required by enterprise applications. Scale with confidence.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Summary Section -->
-    <section class="summary" id="summary">
+    <!-- Agent Mesh Section -->
+    <section class="mesh-section" id="mesh">
+        <div class="mesh-bg"></div>
         <div class="container">
-            <div class="section-header">
-                <h2>Building the Future of <span class="accent">Agentic AI</span></h2>
-            </div>
-            <div class="content-card">
-                <h3>Summary</h3>
-                <p>The emergence of AI agents represents a paradigm shift in how we build and deploy intelligent systems. Success in this new era requires a comprehensive infrastructure approach that combines:</p>
-                <ul>
-                    <li><strong>Platform Engineering</strong> practices that provide the foundation for scalable, secure agent operations</li>
-                    <li><strong>Agent Mesh</strong> architecture that enables seamless multi-agent collaboration</li>
-                    <li><strong>Model Context Protocol (MCP)</strong> servers that connect agents to the tools and data they need</li>
-                    <li><strong>Agent Catalogs</strong> that provide discoverability and governance for agent deployments</li>
-                    <li><strong>LLM Gateways</strong> that offer unified, reliable access to AI models at scale</li>
-                </ul>
-                <p>Together, these components form the agentic architecture — a comprehensive framework for building, deploying, and operating AI agents that can transform how organizations work. As this space continues to evolve, organizations that invest in robust agent infrastructure today will be best positioned to capitalize on the transformative potential of agentic AI.</p>
+            <div class="mesh-content">
+                <div class="mesh-badge">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><path d="M8 1v3M8 12v3M1 8h3M12 8h3M3.05 3.05l2.12 2.12M10.83 10.83l2.12 2.12M3.05 12.95l2.12-2.12M10.83 5.17l2.12-2.12"/></svg>
+                    Integrated Architecture Bundle
+                </div>
+                <h2>The <span>Agent Mesh</span></h2>
+                <p>The Agent Mesh is a distributed networking layer that bundles and integrates the core architectural components together. It enables seamless communication, coordination, and collaboration between AI agents across organizational boundaries.</p>
+                <div class="mesh-features">
+                    <div class="mesh-feature">
+                        <div class="mesh-feature-icon">&#128269;</div>
+                        <span>Service Discovery</span>
+                    </div>
+                    <div class="mesh-feature">
+                        <div class="mesh-feature-icon">&#128268;</div>
+                        <span>Intelligent Routing</span>
+                    </div>
+                    <div class="mesh-feature">
+                        <div class="mesh-feature-icon">&#9878;</div>
+                        <span>Load Balancing</span>
+                    </div>
+                    <div class="mesh-feature">
+                        <div class="mesh-feature-icon">&#128737;</div>
+                        <span>Fault Tolerance</span>
+                    </div>
+                    <div class="mesh-feature">
+                        <div class="mesh-feature-icon">&#127760;</div>
+                        <span>Cross-Domain Communication</span>
+                    </div>
+                    <div class="mesh-feature">
+                        <div class="mesh-feature-icon">&#128274;</div>
+                        <span>Secure Protocols</span>
+                    </div>
+                </div>
+                <a href="https://agentmesh.ai" class="btn btn-mesh">
+                    Learn More
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 <a href="https://Legendary.ai">Legendary AI</a>. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-logo">Agentic<span>Architecture</span></div>
+                <p>&copy; 2025 <a href="https://Legendary.ai">Legendary AI</a>. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 </body>
