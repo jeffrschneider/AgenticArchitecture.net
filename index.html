@@ -664,11 +664,11 @@
                 <div class="logo">Agentic<span>Architecture</span></div>
                 <nav>
                     <a href="#components">Components</a>
-                    <a href="#platform">Platform</a>
                     <a href="#mcp">MCP</a>
                     <a href="#catalog">Catalog</a>
                     <a href="#gateway">Gateway</a>
                     <a href="#mesh">Agent Mesh</a>
+                    <a href="#platform">Platform</a>
                 </nav>
             </div>
         </div>
@@ -700,18 +700,9 @@
             <div class="section-header">
                 <div class="section-label">Architecture Components</div>
                 <h2>Building Blocks of Agentic Systems</h2>
-                <p>Five core components form the foundation of enterprise-grade AI agent infrastructure</p>
+                <p>Four core components form the foundation of enterprise-grade AI agent infrastructure</p>
             </div>
             <div class="components-grid">
-                <a href="#platform" class="component-card">
-                    <div class="component-icon orange">
-                        <svg width="24" height="24" fill="none" stroke="#ff6b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18"/></svg>
-                    </div>
-                    <div class="component-content">
-                        <h3>Platform Engineering</h3>
-                        <p>The foundational discipline for designing scalable, secure agent infrastructure and toolchains.</p>
-                    </div>
-                </a>
                 <a href="#mcp" class="component-card">
                     <div class="component-icon blue">
                         <svg width="24" height="24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -752,89 +743,41 @@
         </div>
     </section>
 
-    <!-- Platform Engineering Section -->
-    <section class="detail-section" id="platform">
-        <div class="container">
-            <div class="detail-grid">
-                <div class="detail-content">
-                    <div class="section-label">Foundation Layer</div>
-                    <h2>Platform Engineering</h2>
-                    <p>Platform Engineering is the discipline of designing and building toolchains and workflows that enable self-service capabilities for software engineering organizations. In agentic AI, it establishes the infrastructure for reliable, secure, and scalable agent operations.</p>
-                    <ul class="feature-list">
-                        <li>
-                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="feature-text">
-                                <strong>Infrastructure Orchestration</strong>
-                                <span>Managing deployment, scaling, and lifecycle of AI agents across distributed environments</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="feature-text">
-                                <strong>Security & Governance</strong>
-                                <span>Implementing authentication, authorization, and audit trails for agent interactions</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="feature-text">
-                                <strong>Observability</strong>
-                                <span>Comprehensive monitoring, logging, and tracing for agent operations</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="feature-text">
-                                <strong>Developer Experience</strong>
-                                <span>Intuitive interfaces and APIs for building, deploying, and managing agents</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="detail-visual orange">
-                    <div class="visual-icon">&#9881;</div>
-                    <div class="visual-title">The Infrastructure Backbone</div>
-                    <p class="visual-description">As organizations scale their AI agent deployments, Platform Engineering becomes the backbone ensuring reliability, maintainability, and continuous innovation in the agentic ecosystem. It's the foundation everything else builds upon.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- MCP Section -->
     <section class="detail-section" id="mcp">
         <div class="container">
             <div class="detail-grid reverse" style="direction: rtl;">
                 <div class="detail-content" style="direction: ltr;">
                     <div class="section-label">Communication Standard</div>
-                    <h2>Model Context Protocol</h2>
-                    <p>MCP is an open standard that defines how AI agents communicate with external tools, data sources, and services. MCP Servers act as the bridge between AI models and the broader ecosystem of enterprise systems and APIs.</p>
+                    <h2>MCP Servers & Gateways</h2>
+                    <p>MCP is an open standard that defines how AI agents communicate with external tools, data sources, and services. <strong>MCP Servers</strong> bridge AI models to enterprise systems, while <strong>MCP Gateways</strong> provide centralized control, security, and intelligent routing across all connected servers.</p>
                     <ul class="feature-list">
                         <li>
                             <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                             <div class="feature-text">
                                 <strong>Standardized Tool Integration</strong>
-                                <span>Universal protocol for connecting AI agents to any tool or service</span>
+                                <span>Universal protocol connecting AI agents to any tool, service, or data source</span>
                             </div>
                         </li>
                         <li>
                             <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                             <div class="feature-text">
-                                <strong>Context Management</strong>
-                                <span>Efficient handling of context windows and memory across interactions</span>
+                                <strong>Unified Access Control</strong>
+                                <span>Centralized authentication, authorization, and rate limiting across all servers</span>
                             </div>
                         </li>
                         <li>
                             <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                             <div class="feature-text">
-                                <strong>Secure Resource Access</strong>
-                                <span>Controlled access to files, databases, and external APIs</span>
+                                <strong>Intelligent Request Routing</strong>
+                                <span>Route requests based on capability, load, and latency with automatic server discovery</span>
                             </div>
                         </li>
                         <li>
                             <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                             <div class="feature-text">
-                                <strong>Capability Declaration</strong>
-                                <span>Clear specification of what each MCP server can do</span>
+                                <strong>Security & Observability</strong>
+                                <span>Real-time security scanning, response caching, and comprehensive audit trails</span>
                             </div>
                         </li>
                     </ul>
@@ -843,7 +786,7 @@
                 <div class="detail-visual blue" style="direction: ltr;">
                     <div class="visual-icon">&#128279;</div>
                     <div class="visual-title">The Connectivity Layer</div>
-                    <p class="visual-description">MCP Servers are the workhorses of agentic systems, providing the connectivity layer that transforms AI models into capable, action-oriented agents that can interact with the real world.</p>
+                    <p class="visual-description">MCP Servers provide the connectivity that transforms AI models into capable agents. MCP Gateways act as intelligent routers, providing unified control, protocol translation, and enterprise-grade security across your entire agentic architecture.</p>
                 </div>
             </div>
         </div>
@@ -988,6 +931,54 @@
                     Learn More
                     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Engineering Section -->
+    <section class="detail-section" id="platform">
+        <div class="container">
+            <div class="detail-grid">
+                <div class="detail-content">
+                    <div class="section-label">Operations & Infrastructure</div>
+                    <h2>Platform Engineering</h2>
+                    <p>Platform Engineering is the discipline of designing and building toolchains and workflows that enable self-service capabilities for software engineering organizations. In agentic AI, it establishes the infrastructure for reliable, secure, and scalable agent operations.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Infrastructure Orchestration</strong>
+                                <span>Managing deployment, scaling, and lifecycle of AI agents across distributed environments</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Security & Governance</strong>
+                                <span>Implementing authentication, authorization, and audit trails for agent interactions</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Observability</strong>
+                                <span>Comprehensive monitoring, logging, and tracing for agent operations</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Developer Experience</strong>
+                                <span>Intuitive interfaces and APIs for building, deploying, and managing agents</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="detail-visual orange">
+                    <div class="visual-icon">&#9881;</div>
+                    <div class="visual-title">The Infrastructure Backbone</div>
+                    <p class="visual-description">As organizations scale their AI agent deployments, Platform Engineering becomes the backbone ensuring reliability, maintainability, and continuous innovation in the agentic ecosystem. Platform teams are essential for standing up and maintaining the necessary infrastructure pieces.</p>
+                </div>
             </div>
         </div>
     </section>
