@@ -676,7 +676,8 @@
                     <a href="#frameworks">Frameworks</a>
                     <a href="#authz">Auth Fabric</a>
                     <a href="#mesh">Agent Mesh</a>
-                    <a href="#platform">Platform</a>
+                    <a href="#observability">Observability</a>
+                    <a href="#interfaces">Interfaces</a>
                 </nav>
             </div>
         </div>
@@ -708,7 +709,7 @@
             <div class="section-header">
                 <div class="section-label">Architecture Components</div>
                 <h2>Building Blocks of Agentic Systems</h2>
-                <p>Six core components form the foundation of enterprise-grade AI agent infrastructure</p>
+                <p>Eight core components form the foundation of enterprise-grade AI agent infrastructure</p>
             </div>
             <div class="components-grid">
                 <a href="#mcp" class="component-card">
@@ -756,13 +757,31 @@
                         <p>Policy-based access control for dynamic, context-aware authorization decisions.</p>
                     </div>
                 </a>
-                <a href="#mesh" class="component-card" style="grid-column: span 2;">
+                <a href="#mesh" class="component-card">
                     <div class="component-icon green">
                         <svg width="24" height="24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
                     </div>
                     <div class="component-content">
                         <h3>Agent Mesh</h3>
-                        <p>Distributed networking layer enabling seamless communication, coordination, and collaboration between AI agents across organizational boundaries.</p>
+                        <p>Distributed networking layer enabling seamless communication and coordination between AI agents.</p>
+                    </div>
+                </a>
+                <a href="#observability" class="component-card">
+                    <div class="component-icon orange">
+                        <svg width="24" height="24" fill="none" stroke="#ff6b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/></svg>
+                    </div>
+                    <div class="component-content">
+                        <h3>Observability & Feedback</h3>
+                        <p>Monitoring, tracing, and feedback collection for continuous agent improvement.</p>
+                    </div>
+                </a>
+                <a href="#interfaces" class="component-card" style="grid-column: span 2;">
+                    <div class="component-icon cyan">
+                        <svg width="24" height="24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <div class="component-content">
+                        <h3>Human-Agent Interfaces</h3>
+                        <p>Chat UIs, agent inboxes, voice IO, and human-in-the-loop controls that enable effective collaboration between users and AI agents.</p>
                     </div>
                 </a>
             </div>
@@ -1057,50 +1076,124 @@
         </div>
     </section>
 
-    <!-- Platform Engineering Section -->
-    <section class="detail-section" id="platform">
+    <!-- Observability & Feedback Loops Section -->
+    <section class="detail-section" id="observability">
         <div class="container">
             <div class="detail-grid">
                 <div class="detail-content">
-                    <div class="section-label">Operations & Infrastructure</div>
-                    <h2>Platform Engineering</h2>
-                    <p>Platform Engineering is the discipline of designing and building toolchains and workflows that enable self-service capabilities for software engineering organizations. In agentic AI, it establishes the infrastructure for reliable, secure, and scalable agent operations.</p>
+                    <div class="section-label">Monitoring & Improvement</div>
+                    <h2>Observability & Feedback Loops</h2>
+                    <p>Comprehensive observability infrastructure for understanding agent behavior, performance, and outcomes. Feedback loops enable continuous improvement through user signals, automated evaluation, and runtime telemetry.</p>
                     <ul class="feature-list">
                         <li>
                             <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                             <div class="feature-text">
-                                <strong>Infrastructure Orchestration</strong>
-                                <span>Managing deployment, scaling, and lifecycle of AI agents across distributed environments</span>
+                                <strong>Distributed Tracing</strong>
+                                <span>End-to-end visibility into agent execution paths, tool calls, and reasoning chains across systems</span>
                             </div>
                         </li>
                         <li>
                             <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                             <div class="feature-text">
-                                <strong>Security & Governance</strong>
-                                <span>Implementing authentication, authorization, and audit trails for agent interactions</span>
+                                <strong>Real-Time Metrics</strong>
+                                <span>Latency, token usage, cost tracking, success rates, and custom business KPIs with alerting</span>
                             </div>
                         </li>
                         <li>
                             <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                             <div class="feature-text">
-                                <strong>Observability</strong>
-                                <span>Comprehensive monitoring, logging, and tracing for agent operations</span>
+                                <strong>Feedback Collection</strong>
+                                <span>User ratings, corrections, and implicit signals captured to improve agent quality over time</span>
                             </div>
                         </li>
                         <li>
                             <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                             <div class="feature-text">
-                                <strong>Developer Experience</strong>
-                                <span>Intuitive interfaces and APIs for building, deploying, and managing agents</span>
+                                <strong>Automated Evaluation</strong>
+                                <span>Continuous quality assessment through LLM-as-judge, regression testing, and A/B experimentation</span>
                             </div>
                         </li>
                     </ul>
                 </div>
                 <div class="detail-visual orange">
-                    <div class="visual-icon">&#9881;</div>
-                    <div class="visual-title">The Infrastructure Backbone</div>
-                    <p class="visual-description">As organizations scale their AI agent deployments, Platform Engineering becomes the backbone ensuring reliability, maintainability, and continuous innovation in the agentic ecosystem. Platform teams are essential for standing up and maintaining the necessary infrastructure pieces.</p>
+                    <div class="visual-icon">&#128200;</div>
+                    <div class="visual-title">See Everything, Improve Continuously</div>
+                    <p class="visual-description">Observability transforms agent deployments from black boxes into transparent systems. Feedback loops close the gap between agent behavior and user expectations, enabling data-driven optimization and rapid iteration.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Human-Agent Interfaces Section -->
+    <section class="detail-section" id="interfaces">
+        <div class="container">
+            <div class="detail-grid reverse" style="direction: rtl;">
+                <div class="detail-content" style="direction: ltr;">
+                    <div class="section-label">User Experience Layer</div>
+                    <h2>Human-Agent Interfaces</h2>
+                    <p>The touchpoints where humans interact with AI agents—from conversational chat interfaces to task management dashboards. Well-designed interfaces bridge the gap between agent capabilities and user needs.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Chat & Conversational UI</strong>
+                                <span>Natural language interfaces with rich message formatting, file sharing, and context persistence</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Agent Inboxes & Task Queues</strong>
+                                <span>Review, approve, or redirect agent-generated work with prioritization and assignment workflows</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Voice & Multimodal IO</strong>
+                                <span>Speech-to-text, text-to-speech, and visual inputs enabling hands-free and accessible interactions</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Human-in-the-Loop Controls</strong>
+                                <span>Approval gates, escalation paths, and intervention points for sensitive or high-stakes operations</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="detail-visual green" style="direction: ltr;">
+                    <div class="visual-icon">&#128483;</div>
+                    <div class="visual-title">Where Humans Meet Agents</div>
+                    <p class="visual-description">Effective interfaces make agent capabilities accessible and trustworthy. From simple chat to sophisticated dashboards, the interface layer determines how naturally users can collaborate with AI agents to accomplish their goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summary Section -->
+    <section class="detail-section" id="summary">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Bringing It All Together</div>
+                <h2>The Complete Agentic Stack</h2>
+                <p>These architectural components work in concert to enable enterprise-grade AI agent deployments</p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 32px;">
+                    The Agentic Architecture provides a blueprint for organizations building intelligent systems at scale. <strong style="color: var(--text-primary);">MCP Servers & Gateways</strong> establish connectivity, the <strong style="color: var(--text-primary);">Agent Catalog</strong> organizes and governs agent assets, and <strong style="color: var(--text-primary);">LLM Gateways</strong> provide unified model access with enterprise controls.
+                </p>
+                <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 32px;">
+                    <strong style="color: var(--text-primary);">Agent Frameworks</strong> accelerate development with sophisticated tooling for memory, RAG, and evaluation. The <strong style="color: var(--text-primary);">Authorization Fabric</strong> enforces security through policy-based access control, while the <strong style="color: var(--text-primary);">Agent Mesh</strong> enables seamless multi-agent coordination across boundaries.
+                </p>
+                <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 48px;">
+                    <strong style="color: var(--text-primary);">Observability & Feedback Loops</strong> provide visibility and continuous improvement, and <strong style="color: var(--text-primary);">Human-Agent Interfaces</strong> ensure that users can effectively collaborate with AI agents. Together, these components form a cohesive foundation for the next generation of intelligent enterprise systems.
+                </p>
+                <a href="#components" class="btn btn-primary">
+                    Explore the Components
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
             </div>
         </div>
     </section>
