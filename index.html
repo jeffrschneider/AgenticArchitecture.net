@@ -674,6 +674,7 @@
                     <a href="#catalog">Catalog</a>
                     <a href="#gateway">Gateway</a>
                     <a href="#frameworks">Frameworks</a>
+                    <a href="#context">Context Fabric</a>
                     <a href="#authz">Auth Fabric</a>
                     <a href="#mesh">Agent Mesh</a>
                     <a href="#observability">Observability</a>
@@ -709,7 +710,7 @@
             <div class="section-header">
                 <div class="section-label">Architecture Components</div>
                 <h2>Building Blocks of Agentic Systems</h2>
-                <p>Eight core components form the foundation of enterprise-grade AI agent infrastructure</p>
+                <p>Nine core components form the foundation of enterprise-grade AI agent infrastructure</p>
             </div>
             <div class="components-grid">
                 <a href="#mcp" class="component-card">
@@ -773,6 +774,15 @@
                     <div class="component-content">
                         <h3>Observability & Feedback</h3>
                         <p>Monitoring, tracing, and feedback collection for continuous agent improvement.</p>
+                    </div>
+                </a>
+                <a href="#context" class="component-card">
+                    <div class="component-icon purple">
+                        <svg width="24" height="24" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 0 0 20"/><path d="M2 12h20"/><path d="M12 2c2.5 2.5 4 6 4 10s-1.5 7.5-4 10"/></svg>
+                    </div>
+                    <div class="component-content">
+                        <h3>Enterprise Context Fabric</h3>
+                        <p>Semantic knowledge graph providing organizational context and shared intelligence to all agents.</p>
                     </div>
                 </a>
                 <a href="#interfaces" class="component-card" style="grid-column: span 2;">
@@ -983,6 +993,54 @@
         </div>
     </section>
 
+    <!-- Enterprise Context Fabric Section -->
+    <section class="detail-section" id="context">
+        <div class="container">
+            <div class="detail-grid reverse" style="direction: rtl;">
+                <div class="detail-content" style="direction: ltr;">
+                    <div class="section-label">Organizational Intelligence</div>
+                    <h2>Enterprise Context Fabric</h2>
+                    <p>The "World Model" for your AI agent workforce. Just as employees need onboarding and company updates to function effectively, agents need a centralized source of truth about the organization—its structure, priorities, and current events.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Structural Knowledge Graph</strong>
+                                <span>Maps organizational entities and relationships: org charts, products, locations, and customer segments with inference capabilities</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Strategic Directives Layer</strong>
+                                <span>Current OKRs, brand voice, and risk policies act as "system prompt overlays" that bias agent decision-making</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Temporal Event Ledger</strong>
+                                <span>Real-time business events (contracts won, leadership changes, market shifts) with automatic expiration of stale data</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>GraphRAG Context Injection</strong>
+                                <span>Enriches agent prompts with relevant organizational context while respecting security clearance and data classification</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="detail-visual purple" style="direction: ltr;">
+                    <div class="visual-icon">&#129504;</div>
+                    <div class="visual-title">Solving the Siloed Agent Problem</div>
+                    <p class="visual-description">Without shared context, your Sales Agent doesn't know that Support is handling a massive outage for the same customer. The Context Fabric bridges this gap—enabling semantic disambiguation (knowing which "Mike" to email) and ensuring every agent operates with the full organizational intelligence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Authorization Fabric Section -->
     <section class="detail-section" id="authz">
         <div class="container">
@@ -1185,7 +1243,7 @@
                     The Agentic Architecture provides a blueprint for organizations building intelligent systems at scale. <a href="#mcp" target="_blank" style="text-decoration: none;"><strong style="color: var(--text-primary);">MCP Servers & Gateways</strong></a> establish connectivity, the <a href="#catalog" target="_blank" style="text-decoration: none;"><strong style="color: var(--text-primary);">Agent Catalog</strong></a> organizes and governs agent assets, and <a href="#gateway" target="_blank" style="text-decoration: none;"><strong style="color: var(--text-primary);">LLM Gateways</strong></a> provide unified model access with enterprise controls.
                 </p>
                 <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 32px;">
-                    <a href="#frameworks" target="_blank" style="text-decoration: none;"><strong style="color: var(--text-primary);">Agent Frameworks</strong></a> accelerate development with sophisticated tooling for memory, RAG, and evaluation. The <a href="#authz" target="_blank" style="text-decoration: none;"><strong style="color: var(--text-primary);">Authorization Fabric</strong></a> enforces security through policy-based access control, while the <a href="#mesh" target="_blank" style="text-decoration: none;"><strong style="color: var(--text-primary);">Agent Mesh</strong></a> enables seamless multi-agent coordination across boundaries.
+                    <a href="#frameworks" target="_blank" style="text-decoration: none;"><strong style="color: var(--text-primary);">Agent Frameworks</strong></a> accelerate development with sophisticated tooling for memory, RAG, and evaluation. The <a href="#context" target="_blank" style="text-decoration: none;"><strong style="color: var(--text-primary);">Enterprise Context Fabric</strong></a> provides shared organizational intelligence, while the <a href="#authz" target="_blank" style="text-decoration: none;"><strong style="color: var(--text-primary);">Authorization Fabric</strong></a> enforces security through policy-based access control. The <a href="#mesh" target="_blank" style="text-decoration: none;"><strong style="color: var(--text-primary);">Agent Mesh</strong></a> enables seamless multi-agent coordination across boundaries.
                 </p>
                 <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.9; margin-bottom: 48px;">
                     <a href="#observability" target="_blank" style="text-decoration: none;"><strong style="color: var(--text-primary);">Observability & Feedback Loops</strong></a> provide visibility and continuous improvement, and <a href="#interfaces" target="_blank" style="text-decoration: none;"><strong style="color: var(--text-primary);">Human-Agent Interfaces</strong></a> ensure that users can effectively collaborate with AI agents. Together, these components form a cohesive foundation for the next generation of intelligent enterprise systems.
