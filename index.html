@@ -21,6 +21,7 @@
             --accent-purple: #8b5cf6;
             --accent-cyan: #06b6d4;
             --accent-green: #10b981;
+            --accent-red: #ef4444;
             --gradient-hero: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff6b35 100%);
         }
 
@@ -301,6 +302,7 @@
         .component-icon.purple { background: rgba(139, 92, 246, 0.15); }
         .component-icon.cyan { background: rgba(6, 182, 212, 0.15); }
         .component-icon.green { background: rgba(16, 185, 129, 0.15); }
+        .component-icon.red { background: rgba(239, 68, 68, 0.15); }
 
         .component-content h3 {
             font-size: 1.25rem;
@@ -432,6 +434,7 @@
         .detail-visual.purple::before { background: var(--accent-purple); }
         .detail-visual.cyan::before { background: var(--accent-cyan); }
         .detail-visual.green::before { background: var(--accent-green); }
+        .detail-visual.red::before { background: var(--accent-red); }
 
         .visual-icon {
             font-size: 4rem;
@@ -667,6 +670,7 @@
                     <a href="#mcp">MCP</a>
                     <a href="#catalog">Catalog</a>
                     <a href="#gateway">Gateway</a>
+                    <a href="#authz">Auth Fabric</a>
                     <a href="#mesh">Agent Mesh</a>
                     <a href="#platform">Platform</a>
                 </nav>
@@ -700,7 +704,7 @@
             <div class="section-header">
                 <div class="section-label">Architecture Components</div>
                 <h2>Building Blocks of Agentic Systems</h2>
-                <p>Four core components form the foundation of enterprise-grade AI agent infrastructure</p>
+                <p>Five core components form the foundation of enterprise-grade AI agent infrastructure</p>
             </div>
             <div class="components-grid">
                 <a href="#mcp" class="component-card">
@@ -728,6 +732,15 @@
                     <div class="component-content">
                         <h3>LLM Gateway</h3>
                         <p>Unified interface for accessing multiple AI models with enterprise-grade controls.</p>
+                    </div>
+                </a>
+                <a href="#authz" class="component-card">
+                    <div class="component-icon red">
+                        <svg width="24" height="24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="component-content">
+                        <h3>Authorization Fabric</h3>
+                        <p>Policy-based access control for dynamic, context-aware authorization decisions.</p>
                     </div>
                 </a>
                 <a href="#mesh" class="component-card" style="grid-column: span 2;">
@@ -781,7 +794,7 @@
                             </div>
                         </li>
                     </ul>
-                    <a href="https://mcpserver.ai" class="btn btn-primary">Learn More</a>
+                    <a href="https://mcpserver.ai" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Learn More</a>
                 </div>
                 <div class="detail-visual blue" style="direction: ltr;">
                     <div class="visual-icon">&#128279;</div>
@@ -830,7 +843,7 @@
                             </div>
                         </li>
                     </ul>
-                    <a href="https://AgentCatalog.com" class="btn btn-primary">Learn More</a>
+                    <a href="https://AgentCatalog.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Learn More</a>
                 </div>
                 <div class="detail-visual purple">
                     <div class="visual-icon">&#128218;</div>
@@ -879,12 +892,60 @@
                             </div>
                         </li>
                     </ul>
-                    <a href="https://LLM-Gateway.com" class="btn btn-primary">Learn More</a>
+                    <a href="https://LLM-Gateway.com" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Learn More</a>
                 </div>
                 <div class="detail-visual cyan" style="direction: ltr;">
                     <div class="visual-icon">&#9889;</div>
                     <div class="visual-title">Production-Ready AI</div>
                     <p class="visual-description">LLM Gateways are essential for production AI deployments, providing the reliability, security, and observability required by enterprise applications. Scale with confidence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authorization Fabric Section -->
+    <section class="detail-section" id="authz">
+        <div class="container">
+            <div class="detail-grid">
+                <div class="detail-content">
+                    <div class="section-label">Security & Access Control</div>
+                    <h2>Authorization Fabric</h2>
+                    <p>Policy-Based Access Control (PBAC) for dynamic, context-aware authorization decisions. The Authorization Fabric ensures every agent action is evaluated, gated, and audited in real-time to maintain security and compliance.</p>
+                    <ul class="feature-list">
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Policy Decision Point</strong>
+                                <span>Evaluates access requests against policies considering identity, context, resource sensitivity, and real-time risk signals</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Policy Enforcement</strong>
+                                <span>Intercepts and gates every agent action—blocking PII exposure, unauthorized data access, or scope violations in real-time</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Context-Aware Decisions</strong>
+                                <span>Dynamic authorization that adapts based on user identity, resource classification, and environmental risk factors</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon"><svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="feature-text">
+                                <strong>Real-Time Risk Assessment</strong>
+                                <span>Continuous evaluation of risk signals to detect and prevent security threats before they materialize</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="detail-visual red">
+                    <div class="visual-icon">&#128737;</div>
+                    <div class="visual-title">Zero-Trust Agent Security</div>
+                    <p class="visual-description">The Authorization Fabric is the security backbone of agentic systems, ensuring that every action is verified, every access is justified, and every interaction is compliant. Build trust through continuous verification.</p>
                 </div>
             </div>
         </div>
@@ -927,7 +988,7 @@
                         <span>Secure Protocols</span>
                     </div>
                 </div>
-                <a href="https://agentmesh.ai" class="btn btn-mesh">
+                <a href="https://agentmesh.ai" class="btn btn-mesh" target="_blank" rel="noopener noreferrer">
                     Learn More
                     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
@@ -988,7 +1049,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">Agentic<span>Architecture</span></div>
-                <p>&copy; 2025 <a href="https://Legendary.ai">Legendary AI</a>. All rights reserved.</p>
+                <p>&copy; 2025 <a href="https://Legendary.ai" target="_blank" rel="noopener noreferrer">Legendary AI</a>. All rights reserved.</p>
             </div>
         </div>
     </footer>
